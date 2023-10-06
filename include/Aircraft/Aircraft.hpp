@@ -9,14 +9,13 @@ private:
     double aileronEffectiveness_;
     double aileronDeflection_;
     std::map<unsigned int, double> rollRate_;
-    unsigned int t = 0;
 
     friend class AutoPilot;
 public:
     Aircraft(double initialRollRate, double rollDampingCoeff, double aileronEffectiveness);
-    const double& rollRate(const double& timeDelta);
+    const double& rollRate(const double& timeDelta, const unsigned int& t);
     void aileronDeflection(const double& aileronDeflection);
 
 };
 
-#endif AIRCRAFT_HPP
+#endif /* AIRCRAFT_HPP */
