@@ -14,7 +14,7 @@ int main(){
             aircraft.aileronDeflection(0);
         }
 
-        std::cout << "roll rate "<< aircraft.rollRate(timeDelta,t) << "at time " << time;
+        std::cout << "roll rate "<< aircraft.rollRate(timeDelta,t) << "at time " << time <<std::endl;
         time += timeDelta;
         ++t;
     } 

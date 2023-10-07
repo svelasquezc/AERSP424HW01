@@ -16,7 +16,7 @@ int main(){
     aircraft.aileronDeflection(1);
     while (time <= 5){
         constantAutoPilot.adaptiveFeedbackControl(t);
-        std::cout << "roll rate "<< aircraft.rollRate(timeDelta,t) << "at time " << time;
+        std::cout << "roll rate "<< aircraft.rollRate(timeDelta,t) << "at time " << time<<std::endl;
         time += timeDelta;
         ++t;
     } 
