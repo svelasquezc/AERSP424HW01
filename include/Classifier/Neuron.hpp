@@ -31,12 +31,16 @@ namespace Classifier{
     }
 
     class Neuron {
-        using InputType = Vector;
-        using OutputType = double;
-        using TrainingDataType = std::pair<InputType,OutputType>;
         Vector weights{0.0001, 0.0001, 0.0001};
         double alpha = 0.001;
         constexpr static double iterations = 200;  
+        
+    public:
+        using InputType = Vector;
+        using OutputType = double;
+        using TrainingDataType = std::pair<InputType,OutputType>;
+
+        Neuron() = default;
 
         void train(const std::vector<TrainingDataType>& trainingData){
             for (unsigned int i =0; i<iterations; ++i){
@@ -55,6 +59,10 @@ namespace Classifier{
 
             return predictedOutput > 0.5 ? "Jet" : "Turboprop";
         } 
+
+        auto printWeights() const {
+            return weights.print();
+        }
 
     };
 

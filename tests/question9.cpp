@@ -3,20 +3,36 @@
 #include<iostream>
 #include<cmath>
 
-#include <Classifier/Vector.hpp>
 #include <Classifier/Neuron.hpp>
 
 int main(){
-    Classifier::Vector w {0.0001,0.0001,0.0001};
-    Classifier::Vector x {124,31.89,20.945};
-    double alpha = 0.001;
-    auto z = Classifier::dot(w,x);
+    Classifier::Neuron neuron{};
+    using TrainingDataType = Classifier::Neuron::TrainingDataType;
+    using InputType =  Classifier::Neuron::InputType;
 
-    auto dw = Classifier::gradientWeights(w,x,1);
-    Classifier::updateWeights(w,alpha,x,1);
+    std::vector<TrainingDataType> trainingData = {
+        {{124,31.89,20.945},1},
+        {{74,51.08,9.170},0},
+        {{103,34.67,8.3},1},
+        {{77,52.0,9.4},0},
+        {{104,35.63,13},1},
+        {{92,56,12.5},0},
+        {{130,31.29,17.637},1},
+        {{73,52,9.6},0}
+        };
 
-    std::cout << "weights gradient: " << dw.print() << std::endl;
-    std::cout << "new weights: " << w.print() << std::endl;
+    neuron.train(trainingData);
+
+    std::vector<InputType> testData = {
+        {87,38.67,6},
+        {79,52.08,8},
+        {92,33.75,7.804},
+        {91,59.25,16}
+        };
+
+    for (const auto& test: testData){
+        std::cout << "Prediction for: "<< test.print() << " is " << neuron.predict(test) << std::endl;
+    }
 
     assert(true);
     return 0;
