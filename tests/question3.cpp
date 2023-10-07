@@ -1,4 +1,5 @@
 #include<iostream>
+#include <cassert>
 
 #include <Aircraft/Aircraft.hpp>
 #include <Aircraft/AutoPilot.hpp>
@@ -19,5 +20,6 @@ int main(){
         time += timeDelta;
         ++t;
     } 
+    assert(true);
     return 0;
 }

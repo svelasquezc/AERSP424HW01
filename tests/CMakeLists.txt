@@ -9,7 +9,7 @@ foreach(X RANGE 1 3)
 endforeach()
 
 
-foreach(X RANGE 4 4)
+foreach(X RANGE 4 9)
     add_executable(question${X} ${AIRCRAFT_HEADERS} question${X}.cpp)
 
     target_include_directories(question${X} PUBLIC ../include)
