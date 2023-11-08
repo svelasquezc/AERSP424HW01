@@ -42,9 +42,7 @@ namespace Classifier{
         }
 
         template<class... Args>
-        Vector(Args... args){
-            data = {args...};
-        }
+        Vector(Args&&... args) : data({std::forward<Args>(args)...}){}
 
         const auto size() const{
             return data.size();
